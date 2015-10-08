@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Restaurant.h"
+#import "Review.h"
 
 @interface AppDelegate ()
 
@@ -17,32 +19,51 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSManagedObject *failedBankInfo = [NSEntityDescription
+    Restaurant *saigon = [NSEntityDescription
                                        insertNewObjectForEntityForName:@"Restaurant"
-                                       inManagedObjectContext:context];
-    [failedBankInfo setValue:@"Test restaurant" forKey:@"name"];
-    [failedBankInfo setValue:@4 forKey:@"rating"];
-    NSManagedObject *failedBankInfo1 = [NSEntityDescription
-                                       insertNewObjectForEntityForName:@"Restaurant"
-                                       inManagedObjectContext:context];
-    [failedBankInfo1 setValue:@"Test restaurant2" forKey:@"name"];
-    [failedBankInfo1 setValue:@4 forKey:@"rating"];
+                                       inManagedObjectContext:self.managedObjectContext];
+    saigon.name = @"Сайгон";
+    saigon.rating = @0;
+    Restaurant *lido = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Restaurant"
+                              inManagedObjectContext:self.managedObjectContext];
+    lido.name = @"Лидо";
+    lido.rating = @0;
+    
+//    Review *lidoReview = [NSEntityDescription
+//                          insertNewObjectForEntityForName:@"Review"
+//                          inManagedObjectContext:self.managedObjectContext];
+//    lidoReview.serviceTime = @13;
+//    lidoReview.mealQuality = @4;
     NSError *error;
-    if (![context save:&error]) {
+    if (![self.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Restaurant" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *restaurant in fetchedObjects) {
-        NSLog(@"Name: %@", [restaurant valueForKey:@"name"]);
-        NSLog(@"Zip: %@", [restaurant valueForKey:@"rating"]);
+    //---------------------------------------
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
+    
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@", @"Лидо"];
+//    [fetch setPredicate:predicate];
+    
+    NSArray *results = [[self managedObjectContext] executeFetchRequest:fetch error:&error];
+    for (Restaurant *restaurant in results) {
+        NSLog(@"Name: %@", restaurant.name);
+        NSLog(@"Rating: %@", restaurant.rating);
     }
+    [self flushDatabase];
     return YES;
+}
+
+-(void) flushDatabase{
+    NSArray *stores = [[self persistentStoreCoordinator] persistentStores];
+    for(NSPersistentStore *store in stores) {
+        [[self persistentStoreCoordinator] removePersistentStore:store error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:nil];
+    }
+    self.managedObjectModel    = nil;
+    self.managedObjectContext  = nil;
+    self.persistentStoreCoordinator = nil;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

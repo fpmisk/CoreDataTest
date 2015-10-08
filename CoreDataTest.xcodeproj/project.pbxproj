@@ -15,6 +15,8 @@
 		845CEC011BC5B34800B17613 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845CEC001BC5B34800B17613 /* Images.xcassets */; };
 		845CEC041BC5B34800B17613 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845CEC021BC5B34800B17613 /* LaunchScreen.xib */; };
 		845CEC101BC5B34800B17613 /* CoreDataTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845CEC0F1BC5B34800B17613 /* CoreDataTestTests.m */; };
+		D01F58FE1BC6BA17007ADB87 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F58FD1BC6BA17007ADB87 /* Review.m */; };
+		D01F59011BC6BA17007ADB87 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = D01F59001BC6BA17007ADB87 /* Restaurant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		845CEC091BC5B34800B17613 /* CoreDataTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		845CEC0E1BC5B34800B17613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845CEC0F1BC5B34800B17613 /* CoreDataTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTestTests.m; sourceTree = "<group>"; };
+		D01F58FC1BC6BA17007ADB87 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		D01F58FD1BC6BA17007ADB87 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		D01F58FF1BC6BA17007ADB87 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		D01F59001BC6BA17007ADB87 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,10 @@
 				845CEC001BC5B34800B17613 /* Images.xcassets */,
 				845CEC021BC5B34800B17613 /* LaunchScreen.xib */,
 				845CEBF71BC5B34800B17613 /* CoreDataTest.xcdatamodeld */,
+				D01F58FF1BC6BA17007ADB87 /* Restaurant.h */,
+				D01F59001BC6BA17007ADB87 /* Restaurant.m */,
+				D01F58FC1BC6BA17007ADB87 /* Review.h */,
+				D01F58FD1BC6BA17007ADB87 /* Review.m */,
 				845CEBF01BC5B34800B17613 /* Supporting Files */,
 			);
 			path = CoreDataTest;
@@ -226,6 +236,8 @@
 				845CEBF91BC5B34800B17613 /* CoreDataTest.xcdatamodeld in Sources */,
 				845CEBFC1BC5B34800B17613 /* ViewController.m in Sources */,
 				845CEBF31BC5B34800B17613 /* main.m in Sources */,
+				D01F59011BC6BA17007ADB87 /* Restaurant.m in Sources */,
+				D01F58FE1BC6BA17007ADB87 /* Review.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,8 +364,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CoreDataTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -362,8 +376,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CoreDataTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -420,6 +436,7 @@
 				845CEC151BC5B34800B17613 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		845CEC161BC5B34800B17613 /* Build configuration list for PBXNativeTarget "CoreDataTestTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +445,7 @@
 				845CEC181BC5B34800B17613 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
